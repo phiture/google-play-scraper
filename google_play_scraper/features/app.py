@@ -19,7 +19,7 @@ def app(app_id: str, lang: str = "en", country: str = "us") -> Dict[str, Any]:
     return parse_dom(dom=dom, app_id=app_id, url=url)
 
 
-def parse_dom(dom: str, app_id: str, url: str) -> Dict[str, Any]:
+def parse_dom(dom: str, app_id: str, url: str, is_authenticated: bool = False) -> Dict[str, Any]:
     matches = Regex.SCRIPT.findall(dom)
 
     dataset = {}
@@ -36,7 +36,9 @@ def parse_dom(dom: str, app_id: str, url: str) -> Dict[str, Any]:
 
     result = {}
 
-    for k, spec in ElementSpecs.Detail.items():
+    element_specs = ElementSpecsAuthenticated if is_authenticated else ElementSpecs
+
+    for k, spec in element_specs.Detail.items():
         if isinstance(spec, list):
             for sub_spec in spec:
                 content = sub_spec.extract_content(dataset)
