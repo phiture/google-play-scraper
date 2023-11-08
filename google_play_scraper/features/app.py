@@ -19,7 +19,9 @@ def app(app_id: str, lang: str = "en", country: str = "us") -> Dict[str, Any]:
     return parse_dom(dom=dom, app_id=app_id, url=url)
 
 
-def parse_dom(dom: str, app_id: str, url: str, is_authenticated: bool = False) -> Dict[str, Any]:
+def parse_dom(
+    dom: str, app_id: str, url: str, is_authenticated: bool = False
+) -> Dict[str, Any]:
     matches = Regex.SCRIPT.findall(dom)
 
     dataset = {}
