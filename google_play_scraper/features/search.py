@@ -2,11 +2,11 @@ import json
 from typing import Any, Dict, List
 from urllib.parse import quote
 
-from google_play_scraper.constants.element import ElementSpecs
-from google_play_scraper.constants.regex import Regex
-from google_play_scraper.constants.request import Formats
-from google_play_scraper.exceptions import NotFoundError
-from google_play_scraper.utils.request import get
+from ..constants.element import ElementSpecs
+from ..constants.regex import Regex
+from ..constants.request import Formats
+from ..exceptions import NotFoundError
+from ..utils.request import get
 
 
 def search(
@@ -25,7 +25,7 @@ def search(
     dataset = {
         key: json.loads(value)
         for match, key, value in zip(
-            matches, Regex.KEY.findall(match), Regex.VALUE.findall(match)
+            matches, Regex.KEY_DS.findall(match), Regex.VALUE.findall(match)
         )
         if key and value
     }

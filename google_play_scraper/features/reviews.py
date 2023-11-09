@@ -2,11 +2,11 @@ import json
 from time import sleep
 from typing import List, Optional, Tuple
 
-from google_play_scraper import Sort
-from google_play_scraper.constants.element import ElementSpecs
-from google_play_scraper.constants.regex import Regex
-from google_play_scraper.constants.request import Formats
-from google_play_scraper.utils.request import post
+from .. import Sort
+from ..constants.element import ElementSpecs
+from ..constants.regex import Regex
+from ..constants.request import Formats
+from ..utils.request import post
 
 MAX_COUNT_EACH_FETCH = 199
 
