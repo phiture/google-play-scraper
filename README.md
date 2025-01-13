@@ -1,22 +1,22 @@
-# Google-Play-Scraper
+# Google-Play-Fetcher
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
-[![PyPI](https://img.shields.io/pypi/v/google-play-scraper.svg)](https://pypi.org/project/google-play-scraper)
-[![downloads](https://img.shields.io/pypi/dm/google-play-scraper.svg)](https://pypistats.org/packages/google-play-scraper)
-[![versions](https://img.shields.io/pypi/pyversions/google-play-scraper.svg)](https://github.com/JoMingyu/google-play-scraper)
-[![scheduled e2e test](https://github.com/JoMingyu/google-play-scraper/actions/workflows/scheduled_e2e_test.yml/badge.svg)](https://github.com/JoMingyu/google-play-scraper/actions/workflows/scheduled_e2e_test.yml)
+[![PyPI](https://img.shields.io/pypi/v/google-play-fetcher.svg)](https://pypi.org/project/google-play-fetcher)
+[![downloads](https://img.shields.io/pypi/dm/google-play-fetcher.svg)](https://pypistats.org/packages/google-play-fetcher)
+[![versions](https://img.shields.io/pypi/pyversions/google-play-fetcher.svg)](https://github.com/JoMingyu/google-play-fetcher)
+[![scheduled e2e test](https://github.com/JoMingyu/google-play-fetcher/actions/workflows/scheduled_e2e_test.yml/badge.svg)](https://github.com/JoMingyu/google-play-fetcher/actions/workflows/scheduled_e2e_test.yml)
 
-Google-Play-Scraper provides APIs to easily crawl the Google Play Store for Python *without any external dependencies!*
+Google-Play-Fetcher provides APIs to easily crawl the Google Play Store for Python *without any external dependencies!*
 
 ## Related Projects
-### [google-play-scraper](https://github.com/facundoolano/google-play-scraper)
-> Node.js scraper to get data from Google Play
+### [google-play-fetcher](https://github.com/facundoolano/google-play-fetcher)
+> Node.js fetcher to get data from Google Play
 
 I have referred a lot to the API design of this library.
 
 ## Installation
 ```
-pip install google-play-scraper
+pip install google-play-fetcher
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ The country and language codes that can be included in the `lang` and `country` 
 
 ### App Detail
 ```python
-from google_play_scraper import app
+from google_play_fetcher import app
 
 result = app(
     'com.nianticlabs.pokemongo',
@@ -149,7 +149,7 @@ Result of `print(result)`:
 > :bulb: Setting `count` too high can cause problems. Because the maximum number of reviews per page supported by Google Play is 200, it is designed to pagination and recrawl by 200 until the number of results reaches count.
 
 ```python
-from google_play_scraper import Sort, reviews
+from google_play_fetcher import Sort, reviews
 
 result, continuation_token = reviews(
     'com.fantome.penguinisle',
@@ -221,7 +221,7 @@ Result of `print(result)`:
 > :bulb: Because of the Google Play Store limit (up to 200 reviews can be fetched at a time), http requests are generated as long as the number of app reviews is divided by 200. For example, targeting an app like Pokémon GO makes tens of thousands of http requests.
 
 ```python
-from google_play_scraper import Sort, reviews_all
+from google_play_fetcher import Sort, reviews_all
 
 result = reviews_all(
     'com.fantome.penguinisle',
@@ -238,7 +238,7 @@ result = reviews_all(
 `permissions` function returns permissions of app.
 
 ```python
-from google_play_scraper import permissions
+from google_play_fetcher import permissions
 
 result = permissions(
     'com.spotify.music',
@@ -304,7 +304,7 @@ Result of `print(result)`:
 ```
 ### App Search
 ```python
-from google_play_scraper import search
+from google_play_fetcher import search
 
 result = search(
     "best Pikachu game",
